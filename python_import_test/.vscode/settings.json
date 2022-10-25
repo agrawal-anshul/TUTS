@@ -1,0 +1,13 @@
+ {
+   "terminal.integrated.env.osx": {
+      "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/folder_a",
+      // "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/folder_a:${workspaceFolder}/folder_a/folder_b",
+   },
+   "terminal.integrated.env.linux": {
+      "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/folder_a",
+   },
+   "terminal.integrated.env.windows": {
+      "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}/folder_a",
+   },
+   "python.envFile": "${workspaceFolder}/.env"
+ }

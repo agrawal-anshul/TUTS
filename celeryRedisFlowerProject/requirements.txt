@@ -1,0 +1,6 @@
+celery
+fastapi
+uvicorn[standard]
+celery
+redis
+flower

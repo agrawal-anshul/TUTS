@@ -24,9 +24,9 @@ def divide(x, y):
     return x + y
 
 @app.get("/divide")
-def call_divide_task(x, y):
-    task = divide.delay(float(x),float(y))
-    return task.status
+def call_divide_task(x:int, y:int):
+    task = divide.delay(x,y)
+    return task.id
 
 if __name__ == "__main__":
     uvicorn.run(

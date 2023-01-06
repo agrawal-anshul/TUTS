@@ -11,17 +11,15 @@ celery = Celery(
     backend="redis://127.0.0.1:6379/0"
 )
 
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
 @celery.task
 def divide(x, y):
     import time
     time.sleep(15)
     return x + y
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 @app.get("/divide")
 def call_divide_task(x:int, y:int):

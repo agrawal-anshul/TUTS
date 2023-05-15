@@ -23,10 +23,10 @@ docker run -p 6379:6379 --name some-redis -d redis
 cd to celey project directory
 
 # Start Celery worker
-celery -A main.celery worker --loglevel=info 
+celery -A tasks.celery_app worker --loglevel=info 
 
 # Start Flower for monitoring
-celery -A main.celery flower --port=5555   
+celery -A tasks.celery_app flower --port=5555   
 # Visit: http://localhost:5555/
 
 

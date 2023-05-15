@@ -2,12 +2,14 @@ from fastapi import FastAPI
 import uvicorn
 from tasks import add,diff,mul,div,tsum
 from celery import chain,group,chord
+from fastapi.responses import RedirectResponse
+
 
 app = FastAPI()
 
 @app.get("/")
-async def root():
-    return {"message": "Hello World"}
+async def docs_redirect():
+    return RedirectResponse(url='/docs')
 
 @app.get("/divide")
 def call_divide_task(x:int, y:int):
@@ -15,7 +17,7 @@ def call_divide_task(x:int, y:int):
     return task.id
 
 @app.get("/test_chain")
-def test_group():
+def test_chain():
     # #simple example
     # chained_tasks = (add.s(2, 2) | mul.s(8) | mul.s(10)).apply_async()
 
@@ -32,7 +34,7 @@ def test_group():
     return res.get()
 
 @app.get("/test_chord")
-def test_group():
+def test_chord():
     tasks = [add.s(i, i) for i in range(20)]
     c = chord(tasks)(tsum.s())
     return c.get()

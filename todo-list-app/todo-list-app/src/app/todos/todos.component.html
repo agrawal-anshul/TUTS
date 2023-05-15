@@ -6,6 +6,7 @@
 <br />
 <br />
 <ul *ngFor="let todo of todos">
+   <app-todo-item [todo]="todo" (todoDelete)="removeTask($event)"></app-todo-item>
   <li>
     {{ todo.id }} - {{ todo.task }}
     <button title="removeTodo" (click)="removeTask(todo)">Remove</button>

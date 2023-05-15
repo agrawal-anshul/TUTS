@@ -19,12 +19,12 @@ export class TodosComponent implements OnInit {
     console.log(this.todos)
     
   }
-  removeTask(task:task){
-    console.warn(task.id)
+  removeTask(task:task | null){
+    console.warn(task?.id)
     // this.todos.forEach((item, index) => {
     //   console.log(index);
     //   if(item.id === task.id) this.todos.splice(index,1);
     // })
-    this.todos = this.todos.filter(item => item.id !== task.id)
+    this.todos = this.todos.filter(item => item.id !== task?.id)
   }
 }
